@@ -1,8 +1,9 @@
 package org.example.models;
 
-public class OrderModel {
-    private int id;
-    private int courierId;
+
+import java.util.List;
+
+public class OrderRequest {
     private String firstName;
     private String lastName;
     private String address;
@@ -10,16 +11,10 @@ public class OrderModel {
     private String phone;
     private int rentTime;
     private String deliveryDate;
-    private int track;
-    private String[] color;
+    private List<String> color;
     private String comment;
-    private String createdAt;
-    private String updatedAt;
-    private int status;
 
-    public OrderModel(int id, int courierId, String firstName, String lastName, String address, String metroStation, String phone, int rentTime, String deliveryDate, int track, String[] color, String comment, String createdAt, String updatedAt, int status) {
-        this.id = id;
-        this.courierId = courierId;
+    public OrderRequest() {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -27,32 +22,8 @@ public class OrderModel {
         this.phone = phone;
         this.rentTime = rentTime;
         this.deliveryDate = deliveryDate;
-        this.track = track;
         this.color = color;
         this.comment = comment;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
-    }
-
-    public OrderModel() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCourierId() {
-        return courierId;
-    }
-
-    public void setCourierId(int courierId) {
-        this.courierId = courierId;
     }
 
     public String getFirstName() {
@@ -111,19 +82,11 @@ public class OrderModel {
         this.deliveryDate = deliveryDate;
     }
 
-    public int getTrack() {
-        return track;
-    }
-
-    public void setTrack(int track) {
-        this.track = track;
-    }
-
-    public String[] getColor() {
+    public List<String> getColor() {
         return color;
     }
 
-    public void setColor(String[] color) {
+    public void setColor(List<String> color) {
         this.color = color;
     }
 
@@ -134,32 +97,5 @@ public class OrderModel {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-
-
 
 }
