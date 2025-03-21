@@ -1,22 +1,17 @@
 package org.example.utils;
 
 import io.qameta.allure.Step;
-import io.qameta.allure.internal.shadowed.jackson.core.JsonProcessingException;
 import io.qameta.allure.internal.shadowed.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
-import org.example.models.OrderModel;
 import org.example.models.OrderRequest;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static io.restassured.RestAssured.given;
-import static org.example.utils.ApiConstants.BASE_URL;
 import static org.example.utils.ApiConstants.ORDER_ENDPOINT;
-import static org.example.utils.BaseApiMethod.sendGetRequest;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class OrderApiMethod extends BaseApiMethod {
@@ -34,7 +29,7 @@ public class OrderApiMethod extends BaseApiMethod {
             OrderRequest orderRequest = buildOrderRequest(color);
             String jsonRequest = objectMapper.writeValueAsString(orderRequest);
 
-            given()
+            RestAssured.given()
                     .contentType(ContentType.JSON)
                     .body(jsonRequest)
                     .when()
@@ -42,7 +37,7 @@ public class OrderApiMethod extends BaseApiMethod {
                     .then()
                     .assertThat().statusCode(HttpStatus.SC_CREATED)
                     .and()
-                    .body("track", notNullValue());
+                    .body("track", Matchers.notNullValue());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

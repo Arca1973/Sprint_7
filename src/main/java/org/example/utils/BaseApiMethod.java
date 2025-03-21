@@ -18,14 +18,14 @@ public abstract class BaseApiMethod {
 
     public static Response sendDeleteRequest(String id){
         var endpoint = String.format(DELETE_COURIER_ENDPOINT ,id);
-        return given()
+        return RestAssured.given()
                 .spec(requestSpecification)
                 .when()
                 .delete(endpoint);
         }
 
     public static Response sendPostRequest(String endpoint, String body){
-        return given()
+        return RestAssured.given()
                 .spec(requestSpecification)
                 .body(body)
                 .when()
@@ -33,7 +33,7 @@ public abstract class BaseApiMethod {
 
         }
     public static Response sendGetRequest(String endpoint, String body){
-        return given()
+        return RestAssured.given()
                 .spec(requestSpecification)
                 .body(body)
                 .when()
